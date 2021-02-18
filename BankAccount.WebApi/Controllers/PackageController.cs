@@ -1,4 +1,4 @@
-﻿using BankAccount.WebApi.Database;
+﻿using BankAccount.WebApi.Model;
 using BankAccount.WebApi.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

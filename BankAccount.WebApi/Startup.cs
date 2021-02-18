@@ -1,4 +1,4 @@
-using BankAccount.WebApi.Database;
+using BankAccount.WebApi.Model;
 using BankAccount.WebApi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,12 +33,16 @@ namespace BankAccount.WebApi
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen();
 
+            //Register the AutoMapper
+            services.AddAutoMapper(typeof(Startup));
+
             services.AddDbContext<BankAccountContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("connection")));
 
 
             services.AddScoped<IPackageService, PackageService>();
             services.AddScoped<IAddressService, AddressService>();
+            services.AddScoped<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

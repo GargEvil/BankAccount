@@ -1,4 +1,5 @@
-﻿using BankAccount.WebApi.Model;
+﻿using BankAccount.WebApi.DTO;
+using BankAccount.WebApi.Model;
 using BankAccount.WebApi.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,19 +12,25 @@ namespace BankAccount.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AddressController : ControllerBase
+    public class UserController : ControllerBase
     {
-        private readonly IAddressService _service;
+        private readonly IUserService _service;
 
-        public AddressController(IAddressService service)
+        public UserController(IUserService service)
         {
             _service = service;
         }
 
         [HttpGet]
-        public List<Address> Get()
+        public List<User> Get()
         {
             return _service.Get();
+        }
+
+        [HttpPost]
+        public User Insert(UserDTO userDto)
+        {
+            return _service.Insert(userDto);
         }
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace BankAccount.WebApi.Database
+namespace BankAccount.WebApi.Model
 {
     public partial class BankAccountContext : DbContext
     {
@@ -25,11 +25,8 @@ namespace BankAccount.WebApi.Database
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string,
-//                you should move it out of source code. You can avoid scaffolding the connection string by using the
-//                    Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148
-//                . For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("connection");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Server=.;Database=BankAccount;Trusted_Connection=True;");
             }
         }
 
@@ -81,24 +78,22 @@ namespace BankAccount.WebApi.Database
                     .IsUnicode(false)
                     .IsFixedLength(true);
 
-                entity.Property(e => e.IdentificationNumber).HasColumnType("numeric(14, 0)");
-
                 entity.Property(e => e.LastName)
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.PhoneNumber).HasColumnType("numeric(15, 0)");
-
                 entity.HasOne(d => d.Address)
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.AddressId)
-                    .HasConstraintName("FK__User__AddressId__2D27B809");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__User__AddressId__30F848ED");
 
                 entity.HasOne(d => d.Package)
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.PackageId)
-                    .HasConstraintName("FK__User__PackageId__2C3393D0");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__User__PackageId__300424B4");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace BankAccount.WebApi.Database
+namespace BankAccount.WebApi.Model
 {
     public partial class Address
     {
