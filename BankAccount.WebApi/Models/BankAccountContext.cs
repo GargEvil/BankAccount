@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace BankAccount.WebApi.Model
+namespace BankAccount.WebApi.Models
 {
     public partial class BankAccountContext : DbContext
     {
@@ -74,26 +74,33 @@ namespace BankAccount.WebApi.Model
 
                 entity.Property(e => e.Gender)
                     .IsRequired()
-                    .HasMaxLength(1)
-                    .IsUnicode(false)
-                    .IsFixedLength(true);
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.IdentificationNumber)
+                    .IsRequired()
+                    .HasMaxLength(14);
 
                 entity.Property(e => e.LastName)
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
+                entity.Property(e => e.PhoneNumber)
+                    .IsRequired()
+                    .HasMaxLength(14);
+
                 entity.HasOne(d => d.Address)
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.AddressId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__User__AddressId__30F848ED");
+                    .HasConstraintName("FK__User__AddressId__38996AB5");
 
                 entity.HasOne(d => d.Package)
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.PackageId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__User__PackageId__300424B4");
+                    .HasConstraintName("FK__User__PackageId__37A5467C");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using BankAccount.WebApi.DTO;
-using BankAccount.WebApi.Model;
+using BankAccount.WebApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +27,7 @@ namespace BankAccount.WebApi.Services
         public User Insert(UserDTO userDto)
         {
             User user = _mapper.Map<User>(userDto);
-
+            
              _context.Users.Add(user);
             _context.SaveChanges();
 

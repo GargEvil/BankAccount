@@ -1,4 +1,4 @@
-﻿using BankAccount.WebApi.Model;
+﻿using BankAccount.WebApi.Models;
 using System.Collections.Generic;
 
 namespace BankAccount.WebApi.Services

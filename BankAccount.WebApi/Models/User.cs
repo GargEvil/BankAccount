@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace BankAccount.WebApi.Model
+namespace BankAccount.WebApi.Models
 {
     public partial class User
     {
@@ -12,8 +12,8 @@ namespace BankAccount.WebApi.Model
         public string LastName { get; set; }
         public string Gender { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public int PhoneNumber { get; set; }
-        public int IdentificationNumber { get; set; }
+        public string PhoneNumber { get; set; }
+        public string IdentificationNumber { get; set; }
         public string EmailAddress { get; set; }
         public int PackageId { get; set; }
         public int AddressId { get; set; }
