@@ -39,6 +39,7 @@ namespace BankAccount.WebApi
             services.AddDbContext<BankAccountContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("connection")));
 
+            services.AddCors();
 
             services.AddScoped<IPackageService, PackageService>();
             services.AddScoped<IAddressService, AddressService>();
@@ -52,6 +53,11 @@ namespace BankAccount.WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(option => option
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyMethod()
+            .AllowAnyHeader());
 
             app.UseSwagger();
 
