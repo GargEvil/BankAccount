@@ -3,11 +3,11 @@ export class Users {
     firstName:string ='';
     lastName:string='';
     gender:string='';
-    dateOfBirth:Date= new Date();
+    dateOfBirth:Date;
     phoneNumber:string='';
     identificationNumber:string='';
     emailAddress:string='';
-    packageId:number=0;
-    addressId:number=0;
+    packageId:number;
+    addressId:number;
 
 }

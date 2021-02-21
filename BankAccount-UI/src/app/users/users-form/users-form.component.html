@@ -1,69 +1,107 @@
 <form novalidate #form="ngForm" (submit)="onSubmit(form)">
-    <div class="form-group py-2 col-md-8">
-        <label>First Name: </label>
-        <input class="form-control form-control-lg" placeholder="John" required
-        name="firstName" #firstName="ngModel" [(ngModel)]="service.formData.firstName"
-        [class.invalid]="firstName.invalid && firstName.touched">
-    </div>
-    <div class="form-group py-2 col-md-8">
-        <label>Last Name: </label>
-        <input class="form-control form-control-lg" placeholder="Doe" required
-        name="lastName" #lastName="ngModel" [(ngModel)]="service.formData.lastName"
-        [class.invalid]="lastName.invalid && lastName.touched">
-    </div>
-    <div class="form-group py-2 col-md-8">
-        <label>Phone Number: </label>
-        <input class="form-control form-control-lg" placeholder="06xxxxxx" required
-        name="phoneNumber" #phoneNumber="ngModel" [(ngModel)]="service.formData.phoneNumber"
-        [class.invalid]="firstName.invalid && firstName.touched">
-    </div>
-    <div class="form-group py-2 col-md-8">
-        <label>Identification Number: </label>
-        <input class="form-control form-control-lg" placeholder="13 Digit Identification Number" required
-        name="identificationNumber" #identificationNumber="ngModel" [(ngModel)]="service.formData.identificationNumber"
-        minlength="13" maxlength="13"
-        [class.invalid]="identificationNumber.invalid && identificationNumber.touched">
-    </div>
-    <!--
-    <div class="form-group">
-        <label>Gender: </label>
-        <select id="genderType" [formControlName]="type"]>
-            <option [ngValue]="null"> Select Gender</option>
-            <option *ngFor="let type of genderList | keywalue" [ngValue]="type.value">{{type.value}}</option>
-            </select>
-  
-    </div>
 
-    [disabled]="form.invalid"
-    -->
-    <div class="form-group py-2 col-md-8">
-        <label>Gender: </label>
-        <input class="form-control form-control-lg" placeholder="Male/Female" required
-        name="gender" #gender="ngModel" [(ngModel)]="service.formData.gender"
-        [class.invalid]="gender.invalid && gender.touched">
+  <div class="form-group py-2 col-md-8">
+    <label>First Name: </label>
+    <input class="form-control form-control-lg" placeholder="John" required name="firstName" #firstName="ngModel"
+      [(ngModel)]="service.formData.firstName" [class.invalid]="firstName.invalid && firstName.touched">
+    <div class="alert alert-danger" *ngIf="!firstName.valid && firstName.touched">
+      First Name is required
     </div>
+  </div>
 
-    <div class="form-group py-2 col-md-8">
-        <label>PackageId: </label>
-        <input class="form-control form-control-lg" placeholder="(1-3)" required
-        name="packageId" #packageId="ngModel" [(ngModel)]="service.formData.packageId"
-        [class.invalid]="packageId.invalid && packageId.touched">
+  <div class="form-group py-2 col-md-8">
+    <label>Last Name: </label>
+    <input class="form-control form-control-lg" placeholder="Doe" required name="lastName" #lastName="ngModel"
+      [(ngModel)]="service.formData.lastName" [class.invalid]="lastName.invalid && lastName.touched">
+    <div class="alert alert-danger" *ngIf="!lastName.valid && lastName.touched">
+      Last Name is required
     </div>
+  </div>
 
-    <div class="form-group py-2 col-md-8">
-        <label>Email: </label>
-        <input class="form-control form-control-lg" placeholder="johndoe@gmail.com" required
-        name="emailAddress" #emailAddress="ngModel" [(ngModel)]="service.formData.emailAddress"
-        [class.invalid]="emailAddress.invalid && emailAddress.touched">
+  <div class="form-group py-2 col-md-8">
+    <label>Email: </label>
+    <input class="form-control form-control-lg" placeholder="johndoe@gmail.com" required name="emailAddress"
+      #emailAddress="ngModel" [(ngModel)]="service.formData.emailAddress" 
+      [class.invalid]="emailAddress.invalid && emailAddress.touched">
+    <div class="alert alert-danger" *ngIf="!emailAddress.valid && emailAddress.touched">
+      Email is required
     </div>
-    <div class="form-group py-2 col-md-8">
-        <label>Address: </label>
-        <input class="form-control form-control-lg" placeholder="Choose" required
-        name="address" #address="ngModel" [(ngModel)]="service.formData.address">
+  </div>
+
+  <div class="form-group py-2 col-md-4">
+    <label>Date of Birth:</label>
+    <input class="form-control form-control-lg" matInput [matDatepicker]="picker" placeholder="Choose a date"
+      name="dateOfBirth" #dateOfBirth="ngModel" [(ngModel)]="service.formData.dateOfBirth" [min]="minDate"
+      [max]="maxDate" required [class.invalid]="dateOfBirth.invalid && dateOfBirth.touched">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <div class="alert alert-danger" *ngIf="!dateOfBirth.valid && dateOfBirth.touched">
+      Date of Birth is required
     </div>
-    <div class="form-group py-3 col-md-8">
-        <button [disabled]="form.invalid" class="btn btn-info btn-lg btn-block pull-right" type="submit">
-            Submit
-        </button>
+  </div>
+
+  <div class="form-group py-2 col-md-8">
+    <label>Gender: </label>
+    <select class="form-control form-control-lg" [(ngModel)]="service.formData.gender" name="gender" #gender="ngModel"
+      [class.invalid]="gender.invalid && gender.touched" required>
+      <option value="">---Select Gender---</option>
+      <option *ngFor="let genderType of genderTypes" [value]="genderType">
+        {{genderType}}</option>
+    </select>
+    <div class="alert alert-danger" *ngIf="!gender.valid && gender.touched">
+      Gender is required
     </div>
+  </div>
+
+  <div class="form-group py-2 col-md-8">
+    <label>Phone Number: </label>
+    <input class="form-control form-control-lg" placeholder="06xxxxxx" required name="phoneNumber"
+      #phoneNumber="ngModel" [(ngModel)]="service.formData.phoneNumber"
+      [class.invalid]="phoneNumber.invalid && phoneNumber.touched">
+    <div class="alert alert-danger" *ngIf="!phoneNumber.valid && phoneNumber.touched">
+      Phone Number is required
+    </div>
+  </div>
+
+  <div class="form-group py-2 col-md-8">
+    <label>Identification Number: </label>
+    <input class="form-control form-control-lg" placeholder="13 Digit Identification Number" required
+      name="identificationNumber" #identificationNumber="ngModel" [(ngModel)]="service.formData.identificationNumber"
+      minlength="13" maxlength="13" [class.invalid]="identificationNumber.invalid && identificationNumber.touched">
+    <div class="alert alert-danger" *ngIf="!identificationNumber.valid && identificationNumber.touched">
+      Identification Number need to be 13 digits number
+    </div>
+  </div>
+
+  <div class="form-group py-2 col-md-8">
+    <label>Address: </label>
+    <select class="form-control form-control-lg" name="address" [(ngModel)]="service.formData.addressId"
+      #address="ngModel" [class.invalid]="address.invalid && address.touched" required>
+      <option *ngFor="let address of addresses" [ngValue]="address.id">
+        {{address.name}}
+      </option>
+    </select>
+    <div class="alert alert-danger" *ngIf="!address.valid && address.touched">
+      Address is required
+    </div>
+  </div>
+
+  <div class="form-group py-2 col-md-8">
+    <label>Package: </label>
+    <select class="form-control form-control-lg" [(ngModel)]="service.formData.packageId" name="package"
+      #package="ngModel" [class.invalid]="package.invalid && package.touched" required>
+      <option *ngFor="let package of packages" [value]="package.id">{{package.name}} - {{package.price}}KM
+      </option>
+    </select>
+    <div class="alert alert-danger" *ngIf="!package.valid && package.touched">
+      Package is required
+    </div>
+  </div>
+
+
+  <div class="form-group py-3 col-md-8">
+    <button [disabled]="form.invalid" class="btn btn-info btn-lg btn-block pull-right" type="submit">
+      Submit
+    </button>
+  </div>
 </form>

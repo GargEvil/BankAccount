@@ -1,4 +1,5 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { MaterialModule } from './material.module';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms"
@@ -17,7 +18,8 @@ import { UsersFormComponent } from './users/users-form/users-form.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

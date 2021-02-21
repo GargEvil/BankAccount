@@ -16,7 +16,7 @@ namespace BankAccount.WebApi.DTO
         public string LastName { get; set; }
 
         [Required]
-        public Gender Gender { get; set; }
+        public string Gender { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
@@ -41,10 +41,10 @@ namespace BankAccount.WebApi.DTO
         public int AddressId { get; set; }
     }
 
-    public enum Gender
-    {
-        Male=1,
-        Female,
-        Other
-    }
+    //public enum Gender
+    //{
+    //    Male=1,
+    //    Female,
+    //    Other
+    //}
 }

@@ -51,7 +51,12 @@ namespace BankAccount.WebApi
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                //app.UseDeveloperExceptionPage();
+                app.UseExceptionHandler("/error-local-development");
+            }
+            else
+            {
+                app.UseExceptionHandler("/error");
             }
 
             app.UseCors(option => option
