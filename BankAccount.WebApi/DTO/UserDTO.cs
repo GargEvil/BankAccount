@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using BankAccount.WebApi.Validators;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BankAccount.WebApi.DTO
 {
@@ -41,10 +42,5 @@ namespace BankAccount.WebApi.DTO
         public int AddressId { get; set; }
     }
 
-    //public enum Gender
-    //{
-    //    Male=1,
-    //    Female,
-    //    Other
-    //}
+
 }

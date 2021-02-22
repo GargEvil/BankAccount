@@ -32,8 +32,8 @@ namespace BankAccount.WebApi.Services
 
         public User Insert(UserDTO userDto)
         {
-            
             User user = _mapper.Map<User>(userDto);
+            
 
             //int discount = 0;
             //if(CheckUserYears(userDto.DateOfBirth.Year)==true)
@@ -48,36 +48,11 @@ namespace BankAccount.WebApi.Services
             _context.Users.Add(user);
             _context.SaveChanges();
 
-            _emailService.SendEmail(userDto.EmailAddress);
+            //_emailService.SendEmail(userDto.EmailAddress);
 
             return user;
         }
 
-        public void SendMail(string email)
-        {
-            MimeMessage message = new MimeMessage();
-
-            MailboxAddress from = new MailboxAddress("Info-bbibank", "uh-ah@hotmail.com");
-            message.From.Add(from);
-
-            MailboxAddress to = new MailboxAddress("User", email);
-            message.To.Add(to);
-
-            message.Subject = "Application successful";
-            BodyBuilder bodyBuilder = new BodyBuilder();
-            bodyBuilder.HtmlBody = "<h1>Congratulations</h1>" +
-                "<p>You successfully applicated for one of the packages in our bank</p>";
-
-            message.Body = bodyBuilder.ToMessageBody();
-
-            SmtpClient client = new SmtpClient();
-            client.Connect("smtp-mail.outlook.com", 587, SecureSocketOptions.StartTls);
-            client.Authenticate("uh-ah@hotmail.com", "monitor123");
-
-            client.Send(message);
-            client.Disconnect(true);
-            client.Dispose();
-        }
         //public bool CheckUserYears(int yearOfBirth)
         //{
         //    //Just simple check for discount reasons- didn't go into details (months and days)

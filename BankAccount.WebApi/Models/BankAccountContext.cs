@@ -94,13 +94,13 @@ namespace BankAccount.WebApi.Models
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.AddressId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__User__AddressId__38996AB5");
+                    .HasConstraintName("FK__User__AddressId__4AB81AF0");
 
                 entity.HasOne(d => d.Package)
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.PackageId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__User__PackageId__37A5467C");
+                    .HasConstraintName("FK__User__PackageId__49C3F6B7");
             });
 
             OnModelCreatingPartial(modelBuilder);

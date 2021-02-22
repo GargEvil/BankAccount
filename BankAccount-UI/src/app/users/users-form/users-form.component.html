@@ -86,22 +86,15 @@
     </div>
   </div>
 
-  <div class="form-group py-2 col-md-8">
-    <label>Package: </label>
-    <select class="form-control form-control-lg" [(ngModel)]="service.formData.packageId" name="package"
-      #package="ngModel" [class.invalid]="package.invalid && package.touched" required>
-      <option *ngFor="let package of packages" [value]="package.id">{{package.name}} - {{package.price}}KM
-      </option>
-    </select>
-    <div class="alert alert-danger" *ngIf="!package.valid && package.touched">
-      Package is required
-    </div>
+  <div class="form-group py-3 col-md-8">
+    <button  class="btn btn-info btn-lg btn-block" type="button" (click)="goBack()">
+      Back
+    </button>
   </div>
-
 
   <div class="form-group py-3 col-md-8">
     <button [disabled]="form.invalid" class="btn btn-info btn-lg btn-block pull-right" type="submit">
-      Submit
+      Next
     </button>
   </div>
 </form>

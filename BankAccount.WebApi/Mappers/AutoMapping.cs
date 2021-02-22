@@ -12,7 +12,7 @@ namespace BankAccount.WebApi.Mappers
     {
           public AutoMapping()
         {
-            CreateMap<User, UserDTO>().ReverseMap();
+            CreateMap<UserDTO, User>().ReverseMap();
 
         }
     }

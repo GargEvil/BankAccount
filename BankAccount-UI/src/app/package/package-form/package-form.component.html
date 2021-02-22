@@ -1,0 +1,27 @@
+
+<div class="jumbotron py-3" >
+    <h1 class="display-4 ">Choose package</h1>
+</div>
+
+<form novalidate #form="ngForm" >
+
+<div class="form-group py-2 col-md-8">
+    <label>Package: </label>
+    <select class="form-control form-control-lg" [(ngModel)]="service.formData.packageId" name="package"
+      #package="ngModel" [class.invalid]="package.invalid && package.touched" required>
+      <option *ngFor="let package of packages" [value]="package.id">{{package.name}} - {{package.price}}KM
+      </option>
+    </select>
+    <div class="alert alert-danger" *ngIf="!package.valid && package.touched">
+      Package is required
+    </div>
+  </div>
+
+  <div class="form-group py-3 col-md-8">
+   <button  [disabled]="form.invalid" class="btn btn-info pull-right"
+    type="button" (click)="goToUsers('users')">
+      Next
+    </button>
+  </div>
+
+</form>

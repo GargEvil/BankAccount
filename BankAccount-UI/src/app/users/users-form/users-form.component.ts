@@ -6,6 +6,7 @@ import { GenderType } from '../../shared/helper/gender-type';
 import { UsersService } from './../../shared/users.service';
 import { Component, OnInit } from '@angular/core';
 import {  NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,7 +19,6 @@ export class UsersFormComponent implements OnInit {
 
 public genderTypes = Object.values(GenderType).filter(value=> typeof value == 'string');
 
-packages: Package[];
 
 addresses: Address[];
 
@@ -28,11 +28,10 @@ maxDate = new Date(2003, 0, 1);
 
   constructor(public service:UsersService,
      private addressService:AddressService,
-     private packageService:PackageService)  { }
+     private router:Router)  { }
   
   ngOnInit(): void {
     this.getAddressList();
-    this.getPackageList();
   }
 
   getAddressList(){
@@ -44,14 +43,9 @@ maxDate = new Date(2003, 0, 1);
     });
   }
 
-  getPackageList(){
-    this.packageService
-    .getAllPackages()
-    .subscribe((data:any) =>{
-      console.log(data);
-      this.packages = data;
-    })
-  }
+ goBack(){
+    this.router.navigate(['']);
+ }
 
   onSubmit(form: NgForm){
     this.service.postUser().subscribe(
