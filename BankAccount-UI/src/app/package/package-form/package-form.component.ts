@@ -15,9 +15,11 @@ export class PackageFormComponent implements OnInit {
   
 packages: Package[];
 
-  constructor(private service:UsersService,
-     private packageService:PackageService,
-     private router:Router) { }
+editable=true;
+
+  constructor(public service:UsersService,
+     public packageService:PackageService,
+     public router:Router) { }
 
   ngOnInit(): void {
     

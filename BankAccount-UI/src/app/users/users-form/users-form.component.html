@@ -1,4 +1,4 @@
-<form novalidate #form="ngForm" (submit)="onSubmit(form)">
+<form novalidate #form="ngForm" >
 
   <div class="form-group py-2 col-md-8">
     <label>First Name: </label>
@@ -21,11 +21,14 @@
   <div class="form-group py-2 col-md-8">
     <label>Email: </label>
     <input class="form-control form-control-lg" placeholder="johndoe@gmail.com" required name="emailAddress"
-      #emailAddress="ngModel" [(ngModel)]="service.formData.emailAddress" 
+      #emailAddress="ngModel" [(ngModel)]="service.formData.emailAddress" email="true" 
       [class.invalid]="emailAddress.invalid && emailAddress.touched">
     <div class="alert alert-danger" *ngIf="!emailAddress.valid && emailAddress.touched">
-      Email is required
-    </div>
+      Email is required to be in format ----@---.com
+      
+   </div> 
+    
+    
   </div>
 
   <div class="form-group py-2 col-md-4">
@@ -36,7 +39,7 @@
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
     <div class="alert alert-danger" *ngIf="!dateOfBirth.valid && dateOfBirth.touched">
-      Date of Birth is required
+      You have to be at least 18 years old
     </div>
   </div>
 
@@ -55,12 +58,17 @@
 
   <div class="form-group py-2 col-md-8">
     <label>Phone Number: </label>
-    <input class="form-control form-control-lg" placeholder="06xxxxxx" required name="phoneNumber"
-      #phoneNumber="ngModel" [(ngModel)]="service.formData.phoneNumber"
-      [class.invalid]="phoneNumber.invalid && phoneNumber.touched">
-    <div class="alert alert-danger" *ngIf="!phoneNumber.valid && phoneNumber.touched">
-      Phone Number is required
+    <input class="form-control form-control-lg" placeholder="06xxxxxx"  name="phoneNumber"
+      #phoneNumber="ngModel" [(ngModel)]="service.formData.phoneNumber" pattern="^(06)\d{7,9}$"
+      [class.invalid]="phoneNumber.invalid && phoneNumber.touched"  required>
+    <div class="alert alert-danger" *ngIf=" phoneNumber.errors?.pattern && phoneNumber.touched">
+
+        Phone number needs to be in format 06xxxxxxx
+      
     </div>
+     
+      
+    
   </div>
 
   <div class="form-group py-2 col-md-8">
@@ -90,10 +98,8 @@
     <button  class="btn btn-info btn-lg btn-block" type="button" (click)="goBack()">
       Back
     </button>
-  </div>
-
-  <div class="form-group py-3 col-md-8">
-    <button [disabled]="form.invalid" class="btn btn-info btn-lg btn-block pull-right" type="submit">
+  
+    <button [disabled]="form.invalid" style="margin-left: 65%;" class="btn btn-info btn-lg btn-block pull-right" (click)="goNext('readonly')" >
       Next
     </button>
   </div>

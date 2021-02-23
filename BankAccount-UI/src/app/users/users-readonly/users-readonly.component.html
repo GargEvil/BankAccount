@@ -1,0 +1,87 @@
+<div class="jumbotron py-3">
+  <h2 class="display-6 text-left">Application review</h2>
+</div>
+<form novalidate #form="ngForm" (submit)="onSubmit(form)">
+
+  <div class="form-group py-2 col-md-8">
+    <label>First Name: </label>
+    <input readonly class="form-control form-control-lg" required name="firstName" #firstName="ngModel"
+      [(ngModel)]="service.formData.firstName">
+  </div>
+
+  <div class="form-group py-2 col-md-8">
+    <label>Last Name: </label>
+    <input readonly class="form-control form-control-lg" placeholder="Doe" required name="lastName" #lastName="ngModel"
+      [(ngModel)]="service.formData.lastName" [class.invalid]="lastName.invalid && lastName.touched">
+
+  </div>
+
+  <div class="form-group py-2 col-md-8">
+    <label>Email: </label>
+    <input readonly class="form-control form-control-lg" required name="emailAddress" #emailAddress="ngModel"
+      [(ngModel)]="service.formData.emailAddress">
+
+  </div>
+
+  <div class="form-group py-2 col-md-4">
+    <label>Date of Birth:</label>
+    <input readonly class="form-control form-control-lg" matInput [matDatepicker]="picker" name="dateOfBirth"
+      #dateOfBirth="ngModel" [(ngModel)]="service.formData.dateOfBirth">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </div>
+
+  <div class="form-group py-2 col-md-8">
+    <label>Gender: </label>
+    <select [disabled]="!editable" class="form-control form-control-lg" [(ngModel)]="service.formData.gender"
+      name="gender" #gender="ngModel" required>
+      <option value="">---Select Gender---</option>
+      <option *ngFor="let genderType of genderTypes" [value]="genderType">
+        {{genderType}}</option>
+    </select>
+  </div>
+
+  <div class="form-group py-2 col-md-8">
+    <label>Phone Number: </label>
+    <input readonly class="form-control form-control-lg" required name="phoneNumber" #phoneNumber="ngModel"
+      [(ngModel)]="service.formData.phoneNumber">
+  </div>
+
+  <div class="form-group py-2 col-md-8">
+    <label>Identification Number: </label>
+    <input readonly class="form-control form-control-lg" placeholder="13 Digit Identification Number" required
+      name="identificationNumber" #identificationNumber="ngModel" [(ngModel)]="service.formData.identificationNumber">
+  </div>
+
+  <div class="form-group py-2 col-md-8">
+    <label>Address: </label>
+    <select [disabled]="!editable" class="form-control form-control-lg" name="address"
+      [(ngModel)]="service.formData.addressId" #address="ngModel" required>
+      <option *ngFor="let address of addresses" [ngValue]="address.id">
+        {{address.name}}
+      </option>
+    </select>
+  </div>
+
+
+  <div class="form-group py-2 col-md-8">
+    <label>Package: </label>
+    <select [disabled]="!editable" class="form-control form-control-lg" [(ngModel)]="service.formData.packageId"
+      name="package" #package="ngModel" required>
+      <option *ngFor="let package of packages" [value]="package.id">{{package.name}} - {{package.price}}KM
+      </option>
+    </select>
+  </div>
+
+
+
+  <div class="form-group py-3 col-md-8">
+    <button class="btn btn-info btn-lg btn-block " type="button" (click)="goBack('users')">
+      Cancel
+    </button>
+
+    <button [disabled]="form.invalid" class="btn btn-info btn-lg btn-block " type="submit" style="margin-left: 55%;">
+      Send
+    </button>
+  </div>
+</form>

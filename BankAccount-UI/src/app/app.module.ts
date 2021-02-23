@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
 import { UsersFormComponent } from './users/users-form/users-form.component';
 import { PackageFormComponent } from './package/package-form/package-form.component';
+import { UsersReadonlyComponent } from './users/users-readonly/users-readonly.component';
 
 const routes:Routes = [
   {
@@ -20,6 +21,9 @@ const routes:Routes = [
 },
 {
   path:'users', component: UsersComponent
+},
+{
+  path:'readonly', component: UsersReadonlyComponent
 }
 ];
 
@@ -28,7 +32,8 @@ const routes:Routes = [
     AppComponent,
     UsersComponent,
     UsersFormComponent,
-    PackageFormComponent
+    PackageFormComponent,
+    UsersReadonlyComponent
   ],
   imports: [
     BrowserModule,

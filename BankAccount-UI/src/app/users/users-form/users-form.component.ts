@@ -19,6 +19,9 @@ export class UsersFormComponent implements OnInit {
 
 public genderTypes = Object.values(GenderType).filter(value=> typeof value == 'string');
 
+public phoneNumberPattern = "^(06)\d{7,9}$";
+
+editable=true;
 
 addresses: Address[];
 
@@ -47,14 +50,10 @@ maxDate = new Date(2003, 0, 1);
     this.router.navigate(['']);
  }
 
-  onSubmit(form: NgForm){
-    this.service.postUser().subscribe(
-      res => {
-          
-          
-      },
-      err =>{console.log(err);}
-    )
-    
-  }
+ goNext(pageName:string):void{
+   this.router.navigate([`${pageName}`]);
+   
+ }
+  
+  
 }
