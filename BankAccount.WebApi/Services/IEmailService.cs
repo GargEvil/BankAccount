@@ -1,7 +1,9 @@
-﻿namespace BankAccount.WebApi.Services
+﻿using BankAccount.WebApi.Models;
+
+namespace BankAccount.WebApi.Services
 {
     public interface IEmailService
     {
-        void SendEmail(string email);
+        void SendEmail(User user);
     }
 }

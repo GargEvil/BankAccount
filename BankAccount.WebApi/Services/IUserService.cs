@@ -6,7 +6,7 @@ namespace BankAccount.WebApi.Services
 {
     public interface IUserService
     {
-        List<User> Get();
+        List<UserDTO> Get();
 
         User Insert(UserDTO userDto);
     }

@@ -50,10 +50,8 @@ namespace BankAccount.WebApi.Models
 
                 entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasMaxLength(50)
+                    .HasMaxLength(10)
                     .IsUnicode(false);
-
-                entity.Property(e => e.Price).HasColumnType("numeric(3, 0)");
             });
 
             modelBuilder.Entity<User>(entity =>
@@ -94,13 +92,13 @@ namespace BankAccount.WebApi.Models
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.AddressId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__User__AddressId__4AB81AF0");
+                    .HasConstraintName("FK__User__AddressId__29572725");
 
                 entity.HasOne(d => d.Package)
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.PackageId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__User__PackageId__49C3F6B7");
+                    .HasConstraintName("FK__User__PackageId__286302EC");
             });
 
             OnModelCreatingPartial(modelBuilder);

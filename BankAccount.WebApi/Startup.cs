@@ -45,6 +45,7 @@ namespace BankAccount.WebApi
             services.AddScoped<IAddressService, AddressService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<IReceiptService, ReceiptService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

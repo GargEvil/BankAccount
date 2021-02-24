@@ -22,15 +22,26 @@ namespace BankAccount.WebApi.Controllers
         }
 
         [HttpGet]
-        public List<User> Get()
+        public List<UserDTO> Get()
         {
             return _service.Get();
         }
 
         [HttpPost]
-        public User Insert(UserDTO userDto)
+        public IActionResult Insert(UserDTO userDto)
         {
-            return _service.Insert(userDto);
+            try
+            {
+
+                _service.Insert(userDto);
+                return Ok();
+            }catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            
+
+
         }
     }
 }

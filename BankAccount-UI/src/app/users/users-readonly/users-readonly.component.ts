@@ -7,6 +7,7 @@ import { UsersService } from './../../shared/users.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-users-readonly',
@@ -36,6 +37,18 @@ export class UsersReadonlyComponent implements OnInit {
     this.getAddressList();
   }
 
+  clearForm(){
+    this.service.formData.firstName='';
+    this.service.formData.lastName='';
+    this.service.formData.emailAddress='';
+    this.service.formData.packageId= null;
+    this.service.formData.phoneNumber = '';
+    this.service.formData.addressId = null;
+    this.service.formData.dateOfBirth = null;
+    this.service.formData.gender = null;
+    this.service.formData.identificationNumber='';
+  }
+
   getPackageList(){
     this.packageService
     .getAllPackages()
@@ -56,13 +69,13 @@ export class UsersReadonlyComponent implements OnInit {
   onSubmit(form: NgForm){
     this.service.postUser().subscribe(
       res => {
-          
-          
+         
       },
       err =>{console.log(err);}
     )
 
     this.router.navigate(['']);
+    this.clearForm();
   }
 
   goBack(pageName:string):void{

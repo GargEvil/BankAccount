@@ -1,0 +1,57 @@
+<h1>Receipt</h1>
+
+<div class="container py-5">
+
+    <div class="form-group py-2 col-md-8">
+        <label>First Name:</label> 
+        <input readonly class="form-control form-control-lg" name="firstName"  #firstName = "ngModel"
+         [(ngModel)]="receipt.firstName" >
+
+    </div>
+    
+    <div class="form-group py-2 col-md-8">
+        <label>Last Name: </label>
+        <input readonly class="form-control form-control-lg" name="lastName" #lastName="ngModel"
+          [(ngModel)]="receipt.lastName">
+    
+    </div>
+      
+
+    <div class="form-group py-2 col-md-8">
+        <label>Email: </label>
+        <input readonly class="form-control form-control-lg" name="emailAddress" #emailAddress="ngModel"
+          [(ngModel)]="receipt.emailAddress">
+    
+    </div>
+
+    <div class="form-group py-2 col-md-8">
+        <label>Identification Number: </label>
+        <input readonly class="form-control form-control-lg" name="identificationNumber"
+         #identificationNumber="ngModel" [(ngModel)]="receipt.identificationNumber">
+    </div>
+
+    <div class="form-group py-2 col-md-8">
+        <label>Address: </label>
+        <input readonly class="form-control form-control-lg" name="address"
+         #address="ngModel" [(ngModel)]="receipt.address">
+    </div>
+<hr class="col-md-8"/>
+    <div class="form-group py-2 col-md-8">
+        <label>Package: </label>
+        <input readonly class="form-control form-control-lg" name="package"
+         #package="ngModel" [(ngModel)]="receipt.package">
+    </div>
+
+    <div class="form-group py-2 col-md-8">
+        <label>Package Price: </label>
+        <input readonly class="form-control form-control-lg" name="packagePrice"
+         #packagePrice="ngModel" [(ngModel)]="receipt.packagePrice">
+    </div>
+    <hr class="col-md-8"/>
+    <div class="form-group py-2 col-md-8">
+        <label>Price To Pay: </label>
+        <input readonly class="form-control form-control-lg" name="priceToPay"
+         #priceToPay="ngModel" [(ngModel)]="receipt.priceToPay">
+    </div>
+</div>
+

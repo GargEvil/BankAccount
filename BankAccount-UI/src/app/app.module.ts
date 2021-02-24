@@ -1,3 +1,4 @@
+
 import { MaterialModule } from './material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,6 +11,7 @@ import { UsersComponent } from './users/users.component';
 import { UsersFormComponent } from './users/users-form/users-form.component';
 import { PackageFormComponent } from './package/package-form/package-form.component';
 import { UsersReadonlyComponent } from './users/users-readonly/users-readonly.component';
+import { ReceiptFormComponent } from './users/receipt-form/receipt-form.component';
 
 const routes:Routes = [
   {
@@ -24,6 +26,9 @@ const routes:Routes = [
 },
 {
   path:'readonly', component: UsersReadonlyComponent
+},
+{
+  path:'receipt/:id', component: ReceiptFormComponent 
 }
 ];
 
@@ -33,7 +38,8 @@ const routes:Routes = [
     UsersComponent,
     UsersFormComponent,
     PackageFormComponent,
-    UsersReadonlyComponent
+    UsersReadonlyComponent,
+    ReceiptFormComponent
   ],
   imports: [
     BrowserModule,

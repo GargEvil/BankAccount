@@ -2,7 +2,8 @@ import { UsersService } from './../../shared/users.service';
 import { Package } from './../../shared/package.model';
 import { PackageService } from './../../shared/package.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-package-form',
@@ -23,7 +24,7 @@ editable=true;
 
   ngOnInit(): void {
     
-    this.getPackageList();
+    this.getPackageList()
   }
 
 

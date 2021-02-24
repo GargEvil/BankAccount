@@ -10,7 +10,7 @@ namespace BankAccount.WebApi.Mappers
 {
     public class AutoMapping : Profile
     {
-          public AutoMapping()
+        public AutoMapping()
         {
             CreateMap<UserDTO, User>().ReverseMap();
 
