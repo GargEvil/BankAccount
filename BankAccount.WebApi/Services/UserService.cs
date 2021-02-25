@@ -4,6 +4,7 @@ using BankAccount.WebApi.DTO;
 using BankAccount.WebApi.Models;
 using MailKit.Net.Smtp;
 using MailKit.Security;
+using Microsoft.EntityFrameworkCore;
 using MimeKit;
 using System;
 using System.Collections.Generic;
@@ -25,25 +26,23 @@ namespace BankAccount.WebApi.Services
             _emailService = emailService;
         }
 
-        public List<UserDTO> Get()
+        public async Task<IEnumerable<User>> Get()
         {
-           var users =_context.Users.ToList();       
-
-            return _mapper.Map<List<UserDTO>>(users);
+            return await _context.Users.ToListAsync();
         }
 
-        public User Insert(UserDTO userDto)
+        public async Task<User> Insert(UserDTO userDto)
         {
             User user = _mapper.Map<User>(userDto);
 
-            Address address = _context.Addresses.Where(a => a.Id == userDto.AddressId).Single();
-            Package package = _context.Packages.Where(p => p.Id == userDto.PackageId).Single();
+            Address address = await _context.Addresses.Where(a => a.Id == userDto.AddressId).SingleAsync();
+            Package package = await _context.Packages.Where(p => p.Id == userDto.PackageId).SingleAsync();
      
 
-            _context.Users.Add(user);
-            _context.SaveChanges();
+            await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
            
-            _emailService.SendEmail(user);
+            await _emailService.SendEmailAsync(user);
 
             return user;
         }

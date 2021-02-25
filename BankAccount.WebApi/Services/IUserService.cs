@@ -1,13 +1,14 @@
 ﻿using BankAccount.WebApi.DTO;
 using BankAccount.WebApi.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BankAccount.WebApi.Services
 {
     public interface IUserService
     {
-        List<UserDTO> Get();
+        Task<IEnumerable<User>> Get();
 
-        User Insert(UserDTO userDto);
+        Task<User> Insert(UserDTO userDto);
     }
 }

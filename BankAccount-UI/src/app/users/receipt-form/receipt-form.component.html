@@ -4,14 +4,14 @@
 
     <div class="form-group py-2 col-md-8">
         <label>First Name:</label> 
-        <input readonly class="form-control form-control-lg" name="firstName"  #firstName = "ngModel"
+        <input readonly class="form-control form-control-lg"  
          [(ngModel)]="receipt.firstName" >
 
     </div>
     
     <div class="form-group py-2 col-md-8">
         <label>Last Name: </label>
-        <input readonly class="form-control form-control-lg" name="lastName" #lastName="ngModel"
+        <input readonly class="form-control form-control-lg" 
           [(ngModel)]="receipt.lastName">
     
     </div>
@@ -19,15 +19,15 @@
 
     <div class="form-group py-2 col-md-8">
         <label>Email: </label>
-        <input readonly class="form-control form-control-lg" name="emailAddress" #emailAddress="ngModel"
+        <input readonly class="form-control form-control-lg" 
           [(ngModel)]="receipt.emailAddress">
     
     </div>
 
     <div class="form-group py-2 col-md-8">
         <label>Identification Number: </label>
-        <input readonly class="form-control form-control-lg" name="identificationNumber"
-         #identificationNumber="ngModel" [(ngModel)]="receipt.identificationNumber">
+        <input readonly class="form-control form-control-lg"
+         [(ngModel)]="receipt.identificationNumber">
     </div>
 
     <div class="form-group py-2 col-md-8">
@@ -38,20 +38,20 @@
 <hr class="col-md-8"/>
     <div class="form-group py-2 col-md-8">
         <label>Package: </label>
-        <input readonly class="form-control form-control-lg" name="package"
-         #package="ngModel" [(ngModel)]="receipt.package">
+        <input readonly class="form-control form-control-lg"
+        [(ngModel)]="receipt.package">
     </div>
 
     <div class="form-group py-2 col-md-8">
         <label>Package Price: </label>
-        <input readonly class="form-control form-control-lg" name="packagePrice"
-         #packagePrice="ngModel" [(ngModel)]="receipt.packagePrice">
+        <input readonly class="form-control form-control-lg"
+        [(ngModel)]="receipt.packagePrice">
     </div>
     <hr class="col-md-8"/>
     <div class="form-group py-2 col-md-8">
         <label>Price To Pay: </label>
-        <input readonly class="form-control form-control-lg" name="priceToPay"
-         #priceToPay="ngModel" [(ngModel)]="receipt.priceToPay">
+        <input readonly class="form-control form-control-lg"
+         [(ngModel)]="receipt.priceToPay">
     </div>
 </div>
 

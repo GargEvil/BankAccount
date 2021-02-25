@@ -1,10 +1,11 @@
 ﻿using BankAccount.WebApi.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BankAccount.WebApi.Services
 {
     public interface IPackageService
     {
-        List<Package> Get();
+        Task<IEnumerable<Package>> Get();
     }
 }

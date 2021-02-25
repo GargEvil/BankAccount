@@ -1,4 +1,5 @@
 ﻿using BankAccount.WebApi.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,9 @@ namespace BankAccount.WebApi.Services
             _context = context;
         }
 
-        public List<Package> Get()
+        public async Task<IEnumerable<Package>> Get()
         {
-            return _context.Packages.ToList();
+            return await _context.Packages.ToListAsync();
         }
     }
 }

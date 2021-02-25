@@ -22,19 +22,21 @@ namespace BankAccount.WebApi.Controllers
         }
 
         [HttpGet]
-        public List<UserDTO> Get()
+        public async Task<IActionResult> Get()
         {
-            return _service.Get();
+           var users = await _service.Get();
+
+            return Ok(users);
         }
 
         [HttpPost]
-        public IActionResult Insert(UserDTO userDto)
+        public async Task<IActionResult> Insert(UserDTO userDto)
         {
             try
             {
+                var savedUser = await _service.Insert(userDto);
+                return Ok(savedUser);
 
-                _service.Insert(userDto);
-                return Ok();
             }catch (Exception e)
             {
                 return BadRequest(e.Message);

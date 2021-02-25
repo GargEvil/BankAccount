@@ -21,9 +21,11 @@ namespace BankAccount.WebApi.Controllers
         }
 
         [HttpGet]
-        public List<Address> Get()
+        public async Task<IActionResult> Get()
         {
-            return _service.Get();
+            var addresses= await _service.Get();
+
+            return Ok(addresses);
         }
     }
 }

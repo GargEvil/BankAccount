@@ -23,9 +23,11 @@ namespace BankAccount.WebApi.Controllers
 
 
         [HttpGet]
-        public List<Package> Get()
+        public async Task<IActionResult> Get()
         {
-            return _service.Get();
+            var packages = await _service.Get();
+
+            return Ok(packages);
         }
     }
 }
